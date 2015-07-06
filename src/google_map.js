@@ -227,6 +227,10 @@ export default class GoogleMap extends Component {
             this_.markersDispatcher_.emit('kON_MOUSE_POSITION_CHANGE');
           }
         }
+
+        if (this.props.onIdle && typeof this.props.onIdle === 'function') {
+          this.props.onIdle();
+        }
       });
 
       maps.event.addListener(map, 'mouseover', () => { // has advantage over div MouseLeave
